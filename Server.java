@@ -1,8 +1,9 @@
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
+
 
 public class Server {
     public static void main(String[] args) throws IOException{
@@ -12,13 +13,15 @@ public class Server {
         Socket s = ss.accept();
 
         //reading data from socket sent by client 
-        Scanner sc = new Scanner(new InputStreamReader(s.getInputStream()));
-        String str = sc.nextLine(); 
-        System.out.println(str);
-
+        DataInputStream is = new DataInputStream(s.getInputStream());
+        while(true)
+        {
+            System.out.println(is.readUTF());
+            DataOutputStream os = new DataOutputStream(s.getOutputStream());
+            os.writeUTF("Hi..This is Server");
+            //closing connection
+        }
         
-        //closing connection
-        sc.close();
-        ss.close();
+        
     }
 }
