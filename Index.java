@@ -43,6 +43,7 @@ public class Index extends JFrame implements ActionListener,Home
         send.addActionListener(this);
         setLayout(null);
         setVisible(true);
+        setTitle("Nagendra");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(600, 500);
     }
@@ -57,9 +58,9 @@ public class Index extends JFrame implements ActionListener,Home
         try 
         {
             os.writeUTF(mess);
-            messages.setText(temp + mess+"\n");
+            messages.setText(temp + "Client  :"+ mess+"\n");
             temp = new StringBuilder(messages.getText());
-            messages.setText(temp + is.readUTF()+"\n");
+            messages.setText(temp + "Server  :"+ is.readUTF()+"\n");
             
             temp = new StringBuilder(messages.getText());
         } 
